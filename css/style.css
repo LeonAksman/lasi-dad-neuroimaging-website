@@ -150,7 +150,8 @@ a:focus-visible, button:focus-visible {
   padding: 9px 12px;
   text-decoration: none;
   color: var(--ink-soft);
-  font-size: 0.94rem;
+  /*font-size: 0.94rem;*/
+   font-size: 1rem;
   border-left: 2px solid transparent;
 }
 
