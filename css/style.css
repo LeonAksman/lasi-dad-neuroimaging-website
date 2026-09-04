@@ -120,6 +120,7 @@ a:focus-visible, button:focus-visible {
 /* ============================================================
    Body layout — sidebar + content
    ============================================================ */
+/*
 .layout {
   max-width: var(--maxw);
   margin: 0 auto;
@@ -134,6 +135,25 @@ a:focus-visible, button:focus-visible {
   padding: 36px 24px 60px 28px;
   position: sticky;
   top: 0;
+}
+*/
+.layout {
+  max-width: none;
+  margin: 0;
+  display: block;
+}
+
+.sidebar {
+  border-right: 1px solid var(--gray-300);
+  padding: 36px 24px 60px 28px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-w);
+  height: 100vh;
+  overflow-y: auto;
+  background: var(--white);
+  z-index: 10;
 }
 
 .sidebar nav ul {
