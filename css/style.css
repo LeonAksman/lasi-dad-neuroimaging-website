@@ -196,7 +196,7 @@ a:focus-visible, button:focus-visible {
   padding: 40px 40px 80px 40px;
   min-width: 0;
   margin-left: var(--sidebar-w);
-  max-width: var(--maxw);
+  max-width: none;    /* was var(--maxw) */
 }
 
 .breadcrumb {
