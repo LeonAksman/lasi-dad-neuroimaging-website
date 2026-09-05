@@ -171,7 +171,7 @@ a:focus-visible, button:focus-visible {
   text-decoration: none;
   color: var(--ink-soft);
   /*font-size: 0.94rem;*/
-   font-size: 1.5rem;
+   font-size: 1.2rem;
   border-left: 2px solid transparent;
 }
 
@@ -190,6 +190,8 @@ a:focus-visible, button:focus-visible {
 .content {
   padding: 40px 40px 80px 40px;
   min-width: 0;
+  margin-left: var(--sidebar-w);
+  max-width: var(--maxw);
 }
 
 .breadcrumb {
