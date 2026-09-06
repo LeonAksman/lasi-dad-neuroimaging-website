@@ -78,6 +78,9 @@ a:focus-visible, button:focus-visible {
   width: auto;
   text-decoration: none;
 }
+.plain-table a {
+  text-decoration: none;
+}
 
 /* ============================================================
    Top bar — logo only, no nav here
