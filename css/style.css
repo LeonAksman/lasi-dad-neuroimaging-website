@@ -76,6 +76,7 @@ a:focus-visible, button:focus-visible {
 .plain-table {
   border-collapse: separate;
   width: auto;
+  text-decoration: none;
 }
 
 /* ============================================================
