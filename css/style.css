@@ -67,9 +67,15 @@ a:focus-visible, button:focus-visible {
 }
 .skip-link:focus { left: 12px; top: 12px; }
 
+/*
 .plain-table td, .plain-table th {
   border-bottom: none;
   font-size: 1.3rem;
+}
+*/
+.plain-table {
+  border-collapse: separate;
+  width: auto;
 }
 
 /* ============================================================
