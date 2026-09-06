@@ -78,8 +78,8 @@ a:focus-visible, button:focus-visible {
   width: auto;
   text-decoration: none;
 }
-.plain-table a {
-  text-decoration: none;
+.plain-table td, .plain-table th {
+  border-bottom: none;
 }
 
 /* ============================================================
