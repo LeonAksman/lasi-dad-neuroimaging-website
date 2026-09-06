@@ -76,7 +76,6 @@ a:focus-visible, button:focus-visible {
 .plain-table {
   border-collapse: separate;
   width: auto;
-  text-decoration: none;
 }
 .plain-table td, .plain-table th {
   border-bottom: none;
