@@ -197,8 +197,8 @@ a:focus-visible, button:focus-visible {
 .sidebar nav a[aria-current="page"] {
   color: var(--black);
   font-weight: 600;
-  border-left: 2px solid var(--black);
-  background: var(--gray-100);
+  /*border-left: 2px solid var(--black);
+  background: var(--gray-100); */
 }
 
 .content {
