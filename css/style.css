@@ -50,7 +50,7 @@ ul, ol { max-width: 68ch; }
 li { margin-bottom: 0.4em; }
 
 /*a { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }*/
-a { color: blue; text-decoration: underline;}
+a { color: #0000FF; text-decoration: underline;} /* blue */
    
 a:hover { color: var(--black); }
 
