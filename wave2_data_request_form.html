@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LASI-DAD Wave 2 MRI Data Request Form</title>
+<title>LASI-DAD Neuroimaging</title>
 <link rel="icon" type="image/png" href="lasi-dad-favicon.ico">
 <meta name="description" content="[Study Name]: overview, study design, and data request information.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -89,7 +89,7 @@
 </head>
 <body>
 
-<h1>Data Request Form</h1>
+<h1>LASI-DAD Wave 2 Neuroimaging Data Request Form</h1>
 
 <form action="https://formspree.io/f/xyeyvvlr" method="POST">
 
@@ -129,21 +129,23 @@
     <div class="checkbox-item">
       <input type="checkbox" id="freesurfer" name="data-requested" value="Freesurfer measures">
       <label for="freesurfer" style="font-weight: normal;">
-        Complete set of Freesurfer measures (cortical and subcortical volume, cortical thickness) derived from T1-weighted MRI. Data is QC'ed and both site-adjusted and unadjusted.
+        Complete set of Freesurfer measures (cortical and subcortical volumes, cortical thicknesses) derived from T1-weighted MRI. <br>
+        Data is QC'ed and both site-adjusted and unadjusted versions are provided.
       </label>
     </div>
 
     <div class="checkbox-item">
       <input type="checkbox" id="wmh" name="data-requested" value="White matter hyperintensity volume">
       <label for="wmh" style="font-weight: normal;">
-        White matter hyperintensity volume derived from FLAIR MRI.
+        White matter hyperintensity volume derived from FLAIR MRI. <br>
+        Data is QC'ed and both site-adjusted and unadjusted versions are provided.
       </label>
     </div>
 
     <div class="checkbox-item">
       <input type="checkbox" id="raw-mri" name="data-requested" value="Raw MRI nifti files">
       <label for="raw-mri" style="font-weight: normal;">
-        Raw MRI nifti files:
+        Raw MRI data in nifti format:
       </label>
     </div>
 
