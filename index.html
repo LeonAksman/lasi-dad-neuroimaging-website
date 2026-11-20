@@ -1,67 +1,357 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LASI-DAD Neuroimaging</title>
-<link rel="icon" type="image/png" href="lasi-dad-favicon.ico">
-<meta name="description" content="[Study Name]: overview, study design, and data request information.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-<style>{h1: 40px;}</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LASI-DAD Brain MRI Dataset (v1.0) — Controlled-Access Data Portal</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --primary: #991b1b; /* Deep academic crimson */
+      --primary-light: #fef2f2;
+      --primary-border: #fecaca;
+      --accent: #1e40af;
+      --border: #cbd5e1;
+      --warn-bg: #fffbeb;
+      --warn-border: #f59e0b;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      margin: 0;
+      padding: 2rem 1rem;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 2.25rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+    header {
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 1.5rem;
+      margin-bottom: 1.75rem;
+    }
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid var(--primary-border);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+    }
+    .badge-neutral {
+      background: #f1f5f9;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+    }
+    h1 {
+      margin: 0.25rem 0 0.6rem;
+      font-size: 1.85rem;
+      line-height: 1.25;
+    }
+    h2 {
+      font-size: 1.25rem;
+      margin-top: 2.25rem;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 0.4rem;
+      color: #1e293b;
+    }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      font-size: 0.92rem;
+    }
+    .cite-box {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 0.9rem 1rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.88rem;
+      margin: 0.75rem 0;
+      color: #1e293b;
+    }
+    .notice {
+      background: var(--warn-bg);
+      border: 1px solid var(--warn-border);
+      border-radius: 8px;
+      padding: 1rem 1.15rem;
+      margin: 1.25rem 0;
+      font-size: 0.95rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.92rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.65rem 0.8rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #f1f5f9;
+      font-weight: 600;
+    }
+    .form-group {
+      margin-bottom: 1.1rem;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+      font-size: 0.95rem;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-family: inherit;
+    }
+    .checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.55rem;
+      margin-bottom: 0.5rem;
+      font-weight: 400;
+      font-size: 0.94rem;
+    }
+    .dua-scroll {
+      max-height: 210px;
+      overflow-y: auto;
+      border: 1px solid var(--border);
+      background: #f8fafc;
+      padding: 0.85rem 1rem;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      margin-bottom: 0.85rem;
+    }
+    button {
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      padding: 0.8rem 1.4rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #7f1d1d;
+    }
+    footer {
+      margin-top: 2.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+  </style>
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
+  <div class="container">
+    <header>
+      <div class="badge-row">
+        <span class="badge">Controlled Access · DUA Required</span>
+        <span class="badge badge-neutral">LASI-DAD Neuroimaging Sub-Study</span>
+        <span class="badge badge-neutral">BIDS NIfTI v1.0</span>
+      </div>
+      <h1>Harmonized Longitudinal Aging Study in India – Diagnostic Assessment of Dementia (LASI-DAD) Brain MRI Dataset</h1>
+      <p style="color: var(--muted); margin-bottom: 0;">
+        <strong>Study Consortium:</strong> University of Southern California (USC), All India Institute of Medical Sciences (AIIMS), and Partner Clinical Imaging Centers<br />
+        <strong>Persistent Identifier (DOI):</strong>
+        <a href="https://doi.org/10.xxxx/lasi-dad.mri.v1">https://doi.org/10.xxxx/lasi-dad.mri.v1</a>
+      </p>
+    </header>
 
-<!-- 
-<header class="top-bar">
-  <div class="top-bar-inner">
-    <a class="logo-link" href="index.html">
-      <img src="lasi-dad-logo.webp" style="height:42px; width:auto;">
-    </a>
-  </div>
-</header>
--->
-  
-<div class="layout">
-  <aside class="sidebar">
-    <nav aria-label="Primary">
-      <ul>
-        <li><a href="index.html" aria-current="page">Overview</a></li>
-        <li><a href="team.html">Team</a></li>
-        <li><a href="wave1-mri.html">Wave 1 MRI</a></li>
-        <li><a href="wave2-mri.html">Wave 2 MRI</a></li>
-        <li><a href="wave3-mri.html">Wave 3 MRI</a></li>
-        <li><a href="data-requests.html">Data Requests</a></li>
-      </ul>
-    </nav>
-  </aside>
+    <section aria-labelledby="citation-heading">
+      <h2 id="citation-heading">Citation &amp; Dataset Metadata</h2>
+      <div class="meta-grid">
+        <div><strong>Release Version:</strong> v1.0 (November 2026)</div>
+        <div><strong>Imaging Standard:</strong> ADNI-3 Harmonized 3T Protocol</div>
+        <div><strong>File Format:</strong> Defaced BIDS NIfTI (<code>.nii.gz</code> + <code>.json</code>)</div>
+        <div><strong>Imaging Repository:</strong> XNAT Controlled Projects</div>
+        <div><strong>Linkage Key:</strong> Harmonized LASI-DAD Subject ID</div>
+        <div><strong>DUA Version:</strong> LASI-DAD-MRI-DUA-v1.0</div>
+      </div>
+      <div class="cite-box">
+        LASI-DAD Research Team. (2026). Harmonized Longitudinal Aging Study in India – Diagnostic Assessment of
+        Dementia (LASI-DAD) Brain MRI Dataset (Version 1.0) [Data set]. https://doi.org/10.xxxx/lasi-dad.mri.v1
+      </div>
+    </section>
 
-  <main id="main" class="content">
-    <p class="breadcrumb"><a href="index.html">Home</a> / <span aria-current="page">Overview</span></p>
-    <br>
-    <img src="lasi-dad-logo.webp" style="max-width: 100%; height: auto;">
-    <br>
-    <br>
-    <p style="text-align: justify;"> Welcome! This site describes the neuroimaging component of the <b>Harmonized Diagnostic Assessment of Dementia for the Longitudinal Aging Study in India (LASI-DAD)</b>. 
-    </p>
-    <br>
-    <p style="text-align: justify;">
-      The overall goal of LASI-DAD is to study late-life cognition and dementia in India. 
-      LASI-DAD collects a rich set of cognitive, health, lifestyle, environmental and biomarker data.
-      More information on LASI-DAD, including how to access its publicly available data, is available <a href="https://lasi-dad.org" target="_blank" rel="noopener noreferrer">here</a>.
-    </p>
-    <br>
-    <p style="text-align: justify;">
-    As part of LASI-DAD Waves 1 and 2 (and as planned for Wave 3), high-quality brain imaging data has been or will be collected using 3 Tesla MRI scanners at multiple sites across India.  
-      Please check out the pages that describe the imaging in each wave. <a href="data-requests.html">Data Requests</a> has info on how to access imaging data. 
-    </p>
+    <section aria-labelledby="overview-heading">
+      <h2 id="overview-heading">Cohort &amp; Acquisition Overview</h2>
+      <p>
+        The <strong>LASI-DAD MRI Sub-Study</strong> provides multi-site 3-Tesla structural, functional, and diffusion
+        neuroimaging data collected from older adults (aged 60+) across India as part of the Harmonized Diagnostic
+        Assessment of Dementia for the Longitudinal Aging Study in India (LASI-DAD). Acquisition sequences are
+        harmonized with the Alzheimer’s Disease Neuroimaging Initiative (ADNI-3) protocol across participating
+        clinical scanning centers to support cross-national dementia, vascular brain injury, and environmental aging
+        research.
+      </p>
+      <p>
+        <strong>De-Identification &amp; Privacy Safeguards:</strong> All DICOM files have been converted to BIDS-compliant
+        NIfTI format with direct personal identifiers, institutional tags, and exact acquisition dates scrubbed from
+        headers. All 3D structural scans (T1w and T2-FLAIR) have been processed with a validated facial-feature
+        removal pipeline (<code>pydeface</code>) prior to repository ingestion.
+      </p>
 
-  </main>
-</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Imaging Modality / Release Tier</th>
+            <th>XNAT Project ID</th>
+            <th>Sequences &amp; File Contents</th>
+            <th>Access Level</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Protocol &amp; Sequence Documentation</strong></td>
+            <td><code>LASIDAD_META</code></td>
+            <td>Scanner harmonization tables, BIDS JSON templates, QC summary guide</td>
+            <td>Open Documentation</td>
+          </tr>
+          <tr>
+            <td><strong>Structural MRI (sMRI)</strong></td>
+            <td><code>LASIDAD_SMRI</code></td>
+            <td>Defaced 3D T1w MPRAGE &amp; 3D T2-FLAIR (<code>.nii.gz</code> + <code>.json</code>)</td>
+            <td>Controlled (DUA)</td>
+          </tr>
+          <tr>
+            <td><strong>Vascular &amp; Susceptibility (SWI / T2*)</strong></td>
+            <td><code>LASIDAD_SWI</code></td>
+            <td>Susceptibility-weighted / T2* GRE scans for microbleed/iron assessment (<code>.nii.gz</code> + <code>.json</code>)</td>
+            <td>Controlled (DUA)</td>
+          </tr>
+          <tr>
+            <td><strong>Diffusion MRI (dMRI)</strong></td>
+            <td><code>LASIDAD_DWI</code></td>
+            <td>Multi-shell / single-shell DWI (<code>.nii.gz</code>, <code>.bval</code>, <code>.bvec</code>, <code>.json</code>)</td>
+            <td>Controlled (DUA)</td>
+          </tr>
+          <tr>
+            <td><strong>Resting-State fMRI (rs-fMRI)</strong></td>
+            <td><code>LASIDAD_FMRI</code></td>
+            <td>Eyes-open resting-state BOLD EPI series + fieldmaps (<code>.nii.gz</code> + <code>.json</code>)</td>
+            <td>Controlled (DUA)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
 
+    <section aria-labelledby="linkage-heading">
+      <h2 id="linkage-heading">Linkage with LASI-DAD Cognitive, Clinical &amp; Exposure Data</h2>
+      <p>
+        Neuroimaging files in XNAT are indexed using anonymized LASI-DAD participant identifiers so approved researchers
+        can link brain MRI phenotypes with cognitive battery scores, clinical consensus dementia diagnoses,
+        sociodemographic variables, and environmental exposure measures. Non-imaging survey and clinical variables are
+        distributed separately through the official <a href="https://lasi-dad.org" target="_blank" rel="noopener noreferrer">LASI-DAD / Gateway to Global Aging Data Portal</a>
+        under standard LASI-DAD data access procedures.
+      </p>
+    </section>
 
-</body>
-</html>
+    <section aria-labelledby="access-heading">
+      <h2 id="access-heading">Step-by-Step Access Procedure</h2>
+      <div class="notice">
+        <strong>Controlled Access Policy:</strong> To protect participant privacy and uphold Indian and US
+        institutional ethics approvals, LASI-DAD MRI files are not available for anonymous bulk download. Access is
+        granted per modality tier following Data Access Committee review of a signed Data Use Agreement (DUA).
+      </div>
+      <ol>
+        <li>
+          <strong>Create an XNAT User Account:</strong> Register for an account on the
+          <a href="https://xnat.example.org" target="_blank" rel="noopener noreferrer">LASI-DAD XNAT Archive</a>
+          and record your exact <strong>XNAT username</strong>.
+        </li>
+        <li>
+          <strong>Submit the MRI Data Use Agreement (Below):</strong> Provide your institutional credentials, XNAT
+          username, intended research abstract, ethics/IRB status, and select the specific MRI modality projects
+          required for your analysis.
+        </li>
+        <li>
+          <strong>Committee Review &amp; Provisioning:</strong> Applications are reviewed for scientific scope and DUA
+          compliance (typical turnaround: 5–10 business days). Upon approval, your XNAT account is added as a read-only
+          <strong>Collaborator</strong> on the approved modality project(s).
+        </li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="dua-heading">
+      <h2 id="dua-heading">LASI-DAD MRI Data Use Agreement (DUA) Request Form</h2>
+      <!-- Point action="..." to your institutional form endpoint or REDCap/API handler -->
+      <form action="https://example.org/api/lasi-dad-dua" method="POST">
+        <input type="hidden" name="dataset_doi" value="10.xxxx/lasi-dad.mri.v1" />
+        <input type="hidden" name="dua_version" value="LASI-DAD-MRI-DUA-v1.0" />
+
+        <div class="form-group">
+          <label for="full_name">Principal Investigator / Applicant Full Name *</label>
+          <input id="full_name" name="full_name" type="text" placeholder="e.g., Dr. Ananya Sharma" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Institutional Email Address *</label>
+          <input id="email" name="email" type="email" placeholder="name@university.edu" required />
+        </div>
+
+        <div class="form-group">
+          <label for="institution">University / Research Institution &amp; Department *</label>
+          <input id="institution" name="institution" type="text" required />
+        </div>
+
+        <div class="form-group">
+          <label for="xnat_username">Registered XNAT Username *</label>
+          <input id="xnat_username" name="xnat_username" type="text" placeholder="Must match your account on XNAT" required />
+        </div>
+
+        <div class="form-group">
+          <label for="lasidad_approved">Have you already been approved for core LASI-DAD survey/cognitive data? *</label>
+          <input id="lasidad_approved" name="lasidad_approved" type="text" placeholder="Yes (include LASI-DAD User ID) / No / Pending" required />
+        </div>
+
+        <div class="form-group">
+          <label>Requested MRI Modality Projects *</label>
+          <label class="checkbox-row">
+            <input type="checkbox" name="modalities[]" value="LASIDAD_SMRI" />
+            Structural MRI — T1w &amp; T2-FLAIR (<code>LASIDAD_SMRI</code>)
+          </label>
+          <label class="checkbox-row">
+            <input type="checkbox" name="modalities[]" value="LASIDAD_SWI" />
+            Susceptibility / Vascular MRI — SWI / T2* (<code>LASIDAD_SWI</code>)
+          </label>
+          <label class="checkbox-row">
+            <input type="checkbox" name="modalities[]" value="LASIDAD_DWI" />
+            Diffusion MRI — DWI + bval/bvec (<code>LASIDAD_DWI</code>)
+          </label>
+          <label class="checkbox-row">
+            <input type="checkbox" name="modalities[]" value="LASIDAD
