@@ -354,4 +354,57 @@
             Diffusion MRI — DWI + bval/bvec (<code>LASIDAD_DWI</code>)
           </label>
           <label class="checkbox-row">
-            <input type="checkbox" name="modalities[]" value="LASIDAD
+            <input type="checkbox" name="modalities[]" value="LASIDAD_FMRI" />
+            Resting-State fMRI — BOLD EPI (<code>LASIDAD_FMRI</code>)
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label for="project_summary">Proposed Research Aims, Statistical Plan &amp; IRB/Ethics Determination *</label>
+          <textarea id="project_summary" name="project_summary" rows="5" placeholder="Briefly describe your research question, requested imaging phenotypes, data security environment, and institutional ethics/IRB status." required></textarea>
+        </div>
+
+        <div class="dua-scroll" aria-label="LASI-DAD MRI Data Use Agreement Terms">
+          <strong>LASI-DAD Brain MRI Data Use Agreement (Version LASI-DAD-MRI-DUA-v1.0)</strong>
+          <p>
+            In consideration of being granted access to the de-identified LASI-DAD Brain MRI Dataset, the Recipient
+            Investigator and Recipient Institution agree to the following binding terms:
+          </p>
+          <ol style="padding-left: 1.25rem; margin: 0;">
+            <li><strong>Permitted Scientific Use:</strong> Data will be used exclusively for non-commercial, peer-reviewed academic or public-health research consistent with the approved project summary above.</li>
+            <li><strong>No Re-Identification or Facial Reconstruction:</strong> Recipient will not attempt to identify individual participants, reconstruct facial features from cranial voxels, or link imaging records with external identifiable datasets.</li>
+            <li><strong>Strict Non-Redistribution:</strong> Recipient will not copy, distribute, upload to public/open platforms (including public AI/cloud training corpora), or share raw or voxel-level derived images outside personnel listed under the approved project.</li>
+            <li><strong>Information Security:</strong> Data will be stored on access-controlled, encrypted institutional servers with immediate breach notification to the LASI-DAD Data Governance Team if unauthorized access occurs.</li>
+            <li><strong>Acknowledgment &amp; Citation:</strong> All publications, preprints, and presentations using these scans must cite the LASI-DAD MRI dataset DOI and acknowledge NIH/NIA grant support and participating Indian clinical centers.</li>
+          </ol>
+        </div>
+
+        <div class="form-group">
+          <label class="checkbox-row">
+            <input type="checkbox" name="agree_dua" value="yes" required />
+            <span>
+              I certify that I am authorized to enter into this agreement on behalf of my research group and agree to
+              all terms of <strong>LASI-DAD-MRI-DUA-v1.0</strong>. *
+            </span>
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label for="signature">Electronic Signature (Type Full Legal Name) *</label>
+          <input id="signature" name="signature" type="text" required />
+        </div>
+
+        <button type="submit">Submit LASI-DAD MRI Access Request</button>
+      </form>
+    </section>
+
+    <footer>
+      <p>
+        <strong>LASI-DAD Neuroimaging Data Governance:</strong> <a href="mailto:lasidad-mri-access@example.org">lasidad-mri-access@example.org</a><br />
+        <strong>Funding Acknowledgment:</strong> Supported by the National Institute on Aging (NIA / NIH) and collaborating institutions.<br />
+        <strong>Release History:</strong> v1.0 (November 2026) — Initial BIDS NIfTI release of harmonized 3T structural, SWI, diffusion, and resting-state fMRI sequences.
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
